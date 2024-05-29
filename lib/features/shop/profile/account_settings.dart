@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:one_click/Constants/Constants.dart';
-import 'package:one_click/Widgets/Widgets.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_navigation/get_navigation.dart';
+import 'package:one_click/Constants_profile/Constants.dart';
+import 'package:one_click/Widgets_profile/Widgets.dart';
+import 'package:one_click/features/shop/profile/pages/edit_profile.dart';
 
 class AccountPage extends StatefulWidget {
   const AccountPage({Key? key}) : super(key: key);
@@ -45,8 +48,17 @@ class _AccountPageState extends State<AccountPage> {
         color: darkMode ? Colors.white : Colors.black,
       ),
       subtitle: Txt(
-        text: "Flutter Developer",
+        text: "+91 7207262274",
         color: darkMode ? Colors.white70 : Colors.black87,
+      ),
+      trailing: IconButton(
+        icon: Icon(
+          Icons.edit,
+          color: darkMode ? Colors.white : Colors.black,
+        ),
+        onPressed: () {
+          Get.to(() => const EditProfilePage());
+        },
       ),
     );
   }
@@ -65,11 +77,15 @@ class _AccountPageState extends State<AccountPage> {
     return Column(
       children: [
         colorTile(
-            Icons.person_outline, Colors.deepPurple, "Personal data", darkMode),
+            Icons.format_list_numbered, Colors.white, "My bookings", darkMode),
+        colorTile(Icons.credit_card, Colors.green, "Payment methods", darkMode),
+        colorTile(Icons.location_on, Colors.red, "Manage addresses", darkMode),
+        colorTile(Icons.auto_awesome, Colors.yellowAccent, "Plus membership",
+            darkMode),
+        colorTile(Icons.star_border, Colors.orange, "My rating", darkMode),
+        colorTile(Icons.wallet, const Color.fromARGB(255, 172, 134, 121),
+            "Wallet", darkMode),
         colorTile(Icons.settings_outlined, Colors.blue, "Settings", darkMode),
-        colorTile(Icons.credit_card, Colors.pink, "Payment", darkMode),
-        colorTile(
-            Icons.favorite_border, Colors.orange, "Personal data", darkMode),
       ],
     );
   }
@@ -77,9 +93,8 @@ class _AccountPageState extends State<AccountPage> {
   Widget bwTiles(bool darkMode) {
     return Column(
       children: [
-        bwTile(Icons.info_outline, "FAQs", darkMode),
-        bwTile(Icons.border_color_outlined, "Handbook", darkMode),
-        bwTile(Icons.textsms_outlined, "Community", darkMode),
+        bwTile(Icons.info_outline, "About Us", darkMode),
+        bwTile(Icons.textsms_outlined, "Queries", darkMode),
       ],
     );
   }
