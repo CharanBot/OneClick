@@ -23,8 +23,7 @@ class _AccountPageState extends State<AccountPage> {
       backgroundColor: darkMode ? Colors.grey[900] : const Color(0xffffffff),
       body: ListView(
         padding: const EdgeInsets.all(12),
-        physics:
-            const BouncingScrollPhysics(), //use this for a bouncing experience
+        physics: const BouncingScrollPhysics(),
         children: [
           Container(height: 35),
           userTile(darkMode),
@@ -76,16 +75,28 @@ class _AccountPageState extends State<AccountPage> {
   Widget colorTiles(bool darkMode) {
     return Column(
       children: [
+        colorTile(Icons.format_list_numbered, Colors.white,
+            const Color.fromARGB(255, 59, 59, 59), "My bookings", darkMode),
+        colorTile(Icons.credit_card, Colors.green,
+            const Color.fromARGB(255, 0, 122, 4), "Payment methods", darkMode),
         colorTile(
-            Icons.format_list_numbered, Colors.white, "My bookings", darkMode),
-        colorTile(Icons.credit_card, Colors.green, "Payment methods", darkMode),
-        colorTile(Icons.location_on, Colors.red, "Manage addresses", darkMode),
-        colorTile(Icons.auto_awesome, Colors.yellowAccent, "Plus membership",
+            Icons.location_on,
+            Colors.red,
+            const Color.fromARGB(255, 222, 52, 40),
+            "Manage addresses",
             darkMode),
-        colorTile(Icons.star_border, Colors.orange, "My rating", darkMode),
+        colorTile(
+            Icons.auto_awesome,
+            Colors.yellowAccent,
+            const Color.fromARGB(255, 189, 170, 0),
+            "Plus membership",
+            darkMode),
+        colorTile(
+            Icons.grade, Colors.orange, Colors.yellow, "My rating", darkMode),
         colorTile(Icons.wallet, const Color.fromARGB(255, 172, 134, 121),
-            "Wallet", darkMode),
-        colorTile(Icons.settings_outlined, Colors.blue, "Settings", darkMode),
+            Colors.brown, "Wallet", darkMode),
+        colorTile(Icons.settings_outlined, Colors.blue, Colors.blue, "Settings",
+            darkMode),
       ],
     );
   }
@@ -93,28 +104,37 @@ class _AccountPageState extends State<AccountPage> {
   Widget bwTiles(bool darkMode) {
     return Column(
       children: [
-        bwTile(Icons.info_outline, "About Us", darkMode),
-        bwTile(Icons.textsms_outlined, "Queries", darkMode),
+        bwTile(Icons.info_outline, Colors.white, Colors.black, "About Us",
+            darkMode),
+        bwTile(Icons.textsms_outlined, Colors.white, Colors.black,
+            "Chat with Us", darkMode),
+        bwTile(Icons.contact_phone, Colors.white, Colors.black, "Contact Us",
+            darkMode),
       ],
     );
   }
 
-  Widget bwTile(IconData icon, String text, bool darkMode) {
-    return colorTile(icon, Colors.black, text, darkMode, blackAndWhite: true);
+  Widget bwTile(IconData icon, Color darkColor, Color lightColor, String text,
+      bool darkMode) {
+    return colorTile(icon, darkColor, lightColor, text, darkMode,
+        blackAndWhite: true);
   }
 
-  Widget colorTile(IconData icon, Color color, String text, bool darkMode,
+  Widget colorTile(IconData icon, Color darkColor, Color lightColor,
+      String text, bool darkMode,
       {bool blackAndWhite = false}) {
     Color? pickedColor = darkMode ? Colors.grey[800] : const Color(0xfff3f4fe);
+    Color iconColor = darkMode ? darkColor : lightColor;
+
     return ListTile(
       leading: Container(
         height: 45,
         width: 45,
         decoration: BoxDecoration(
-          color: blackAndWhite ? pickedColor : color.withOpacity(0.09),
+          color: blackAndWhite ? pickedColor : iconColor.withOpacity(0.09),
           borderRadius: BorderRadius.circular(18),
         ),
-        child: Icon(icon, color: color),
+        child: Icon(icon, color: iconColor),
       ),
       title: Txt(
         text: text,
