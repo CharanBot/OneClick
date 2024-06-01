@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:get/get.dart';
-import 'package:one_click/features/authentication/onboarding/onboarding.dart';
+import 'package:one_click/features/authentication/sign_In/onboard_login/onboard_login.dart';
 
 class BotButton extends StatelessWidget {
   const BotButton({Key? key}) : super(key: key);
@@ -14,7 +14,7 @@ class BotButton extends StatelessWidget {
 
     return ElevatedButton(
       onPressed: () {
-        Get.to(() => const OnBoardingScreen());
+        Get.to(() => const Onboard_login());
       },
       style: ElevatedButton.styleFrom(
         shape: const CircleBorder(),
