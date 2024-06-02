@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:get/get.dart';
+import 'package:one_click/features/authentication/sign_In/create_acc/select_user_type.dart';
 import 'package:one_click/nav_menu.dart';
 
 class Onboard_login extends StatefulWidget {
@@ -38,8 +39,8 @@ class _Onboard_loginState extends State<Onboard_login> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Container(
-              height: screenHeight * 0.5, // Cover half of the screen
+            SizedBox(
+              height: screenHeight * 0.5,
               child: Column(
                 children: [
                   const SizedBox(height: 24),
@@ -205,7 +206,9 @@ class _Onboard_loginState extends State<Onboard_login> {
                   right: 0,
                   child: Center(
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.to(SelectionPage());
+                      },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.orange,
                         shape: RoundedRectangleBorder(
