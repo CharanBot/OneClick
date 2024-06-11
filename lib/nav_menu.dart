@@ -52,4 +52,7 @@ class NavigationController extends GetxController {
     const ChatScreen(),
     const AccountPage(),
   ];
+  void goToChats() {
+    selectedIndex.value = 2; // Index of the ChatScreen in the screens list
+  }
 }
