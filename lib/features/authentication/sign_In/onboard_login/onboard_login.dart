@@ -18,9 +18,9 @@ class _Onboard_loginState extends State<Onboard_login> {
   final CarouselController _controller = CarouselController();
 
   final List<String> imgList = [
-    'assets/images/OnBoarding/board_1.gif',
-    'assets/images/OnBoarding/board_2.gif',
-    'assets/images/OnBoarding/board_3.gif',
+    'assets/images/OnBoarding/banner-1.gif',
+    'assets/images/OnBoarding/banner-3.gif',
+    'assets/images/OnBoarding/banner-3.gif',
   ];
 
   final List<String> textList = [
@@ -68,8 +68,10 @@ class _Onboard_loginState extends State<Onboard_login> {
                   const SizedBox(height: 1),
                   Text(
                     textList[_current],
-                    style:
-                        TextStyle(color: isDark ? Colors.white : Colors.black),
+                    style: TextStyle(
+                      color: isDark ? Colors.white : Colors.black,
+                      fontWeight: FontWeight.bold,
+                    ),
                     textAlign: TextAlign.center,
                   ),
                   Row(
@@ -120,7 +122,7 @@ class _Onboard_loginState extends State<Onboard_login> {
                   ),
                   child: Column(
                     children: [
-                      const SizedBox(height: 30),
+                      const SizedBox(height: 15),
                       TextButton(
                         onPressed: () {
                           Get.to(() => const NavigationMenu());
@@ -128,7 +130,11 @@ class _Onboard_loginState extends State<Onboard_login> {
                         child: Text(
                           'I already have an account',
                           style: TextStyle(
-                              color: isDark ? Colors.white : Colors.white),
+                            color: isDark ? Colors.white : Colors.white,
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                            decoration: TextDecoration.underline,
+                          ),
                         ),
                       ),
                       const SizedBox(height: 7),

@@ -70,11 +70,15 @@ class TRoundedImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bool isNetworkImage = imageUrl.startsWith('http');
+
     return Padding(
       padding: padding,
       child: ClipRRect(
         borderRadius: BorderRadius.circular(8.0),
-        child: Image.network(imageUrl, fit: BoxFit.cover),
+        child: isNetworkImage
+            ? Image.network(imageUrl, fit: BoxFit.cover)
+            : Image.asset(imageUrl, fit: BoxFit.cover),
       ),
     );
   }

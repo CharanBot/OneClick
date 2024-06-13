@@ -10,15 +10,14 @@ class SelectLanguage extends StatefulWidget {
 
 class _SelectLanguageState extends State<SelectLanguage> {
   String _selectedLanguage = 'English'; // Default selected language
-  String _gifPath =
-      'assets/images/Sel_lan/under_construction.gif'; // Default GIF path
+  String _gifPath = 'assets/logos/only_click_logo.png'; // Default GIF path
   String _message =
       'You have selected English, you can also change this later'; // Default message
 
   final Map<String, String> _languageGifs = {
-    'English': 'assets/images/Sel_lan/under_construction.gif',
-    'Hindi': 'assets/images/banners/banner_7.jpg',
-    'Telugu': 'assets/images/banners/banner_8.jpg',
+    'English': 'assets/logos/only_click_logo.png',
+    'Hindi': 'assets/logos/only_click_logo.png',
+    'Telugu': 'assets/logos/only_click_logo.png',
   };
 
   final Map<String, String> _languageMessages = {
@@ -45,7 +44,7 @@ class _SelectLanguageState extends State<SelectLanguage> {
         children: [
           Positioned(
             top: MediaQuery.of(context).size.height *
-                0.2, // Adjust the value to move up
+                0.1, // Adjust the value to move up
             left: 0,
             right: 0,
             child: Column(
@@ -53,12 +52,11 @@ class _SelectLanguageState extends State<SelectLanguage> {
               children: [
                 Image.asset(
                   _gifPath,
-                  width: 300,
+                  width: 400,
                   alignment: Alignment.center,
                 ),
                 const SizedBox(
-                    height:
-                        30.0), // Add some space between the GIF and the dropdown
+                    height: 60.0), // space between the GIF and the dropdown
                 Container(
                   padding: const EdgeInsets.all(10.0),
                   decoration: BoxDecoration(

@@ -13,6 +13,5 @@ void main() {
 
   // // Splash wait until items Load
   // FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
-
   runApp(const App());
 }
