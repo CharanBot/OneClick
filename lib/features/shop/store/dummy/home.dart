@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:one_click/animations/FadeAnimation.dart';
-import 'package:one_click/features/shop/store/dummy/model/service.dart';
+import 'package:only_click/animations/FadeAnimation.dart';
+import 'package:only_click/features/shop/store/dummy/model/service.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);

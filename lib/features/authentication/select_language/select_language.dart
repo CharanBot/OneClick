@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:one_click/features/authentication/select_language/widgets/next_button.dart';
+import 'package:only_click/features/authentication/select_language/widgets/next_button.dart';
 
 class SelectLanguage extends StatefulWidget {
   const SelectLanguage({Key? key}) : super(key: key);
@@ -75,12 +75,12 @@ class _SelectLanguageState extends State<SelectLanguage> {
                           color: isDark
                               ? Colors.white
                               : Colors.black, // Text color
-                          fontSize: 18.0, // Adjust text size as needed
-                          fontWeight:
-                              FontWeight.bold, // Adjust text weight as needed
+                          fontSize: 18.0,
+                          fontFamily: 'Poppins',
+                          fontWeight: FontWeight.w500,
                         ),
                       ),
-                      const SizedBox(height: 15.0),
+                      const SizedBox(height: 18.0),
                       DropdownButtonFormField<String>(
                         value: _selectedLanguage,
                         decoration: InputDecoration(
@@ -104,6 +104,8 @@ class _SelectLanguageState extends State<SelectLanguage> {
                           color: isDark
                               ? Colors.white
                               : Colors.black, // Text color for dropdown
+                          fontFamily: 'Poppins',
+                          fontWeight: FontWeight.w400,
                         ),
                         items: ['English', 'Hindi', 'Telugu']
                             .map((String language) {
@@ -161,7 +163,8 @@ class _SelectLanguageState extends State<SelectLanguage> {
                   style: TextStyle(
                     color: isDark ? Colors.white : Colors.black, // Text color
                     fontSize: 16.0, // Adjust text size as needed
-                    fontWeight: FontWeight.w500, // Text weight
+                    fontWeight: FontWeight.w500,
+                    fontFamily: 'Poppins',
                   ),
                   textAlign: TextAlign.center,
                 ),

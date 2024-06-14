@@ -133,6 +133,7 @@ class TVerticalImageText extends StatelessWidget {
                 style: const TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w500,
+                  fontFamily: 'Raleway',
                 ),
                 textAlign: TextAlign.left,
                 maxLines: 3,

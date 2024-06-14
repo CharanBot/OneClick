@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
-import 'package:one_click/Widgets_profile/Widgets.dart';
+import 'package:only_click/Widgets_profile/Widgets.dart';
 
 class EditProfilePage extends StatefulWidget {
   const EditProfilePage({Key? key}) : super(key: key);

@@ -111,7 +111,9 @@ class _SearchContainerState extends State<SearchContainer>
                         scrollDirection: Axis.horizontal,
                         child: Text(
                           _textEditingController.text,
-                          style: const TextStyle(fontSize: 16),
+                          style: const TextStyle(
+                              fontFamily: 'Raleway',
+                              fontWeight: FontWeight.w500),
                         ),
                       );
                     },

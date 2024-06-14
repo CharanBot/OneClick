@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:one_click/animations/FadeAnimation.dart';
-import 'package:one_click/features/shop/store/dummy/home.dart';
+import 'package:only_click/animations/FadeAnimation.dart';
+import 'package:only_click/features/shop/store/dummy/home.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
 class DateAndTime extends StatefulWidget {

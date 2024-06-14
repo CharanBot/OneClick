@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
-import 'package:one_click/Constants_profile/Constants.dart';
-import 'package:one_click/Widgets_profile/Widgets.dart';
-import 'package:one_click/features/shop/profile/pages/edit_profile.dart';
+import 'package:only_click/Constants_profile/Constants.dart';
+import 'package:only_click/Widgets_profile/Widgets.dart';
+import 'package:only_click/features/shop/profile/pages/edit_profile.dart';
 
 class AccountPage extends StatefulWidget {
   const AccountPage({Key? key}) : super(key: key);

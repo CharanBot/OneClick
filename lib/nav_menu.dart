@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:one_click/features/shop/chat/chat.dart';
-import 'package:one_click/features/shop/home/home.dart';
-import 'package:one_click/features/shop/profile/account_settings.dart';
-import 'package:one_click/features/shop/store/dummy/start_page.dart';
+import 'package:only_click/features/shop/chat/chat.dart';
+import 'package:only_click/features/shop/home/home.dart';
+import 'package:only_click/features/shop/profile/account_settings.dart';
+import 'package:only_click/features/shop/store/dummy/start_page.dart';
 
 class NavigationMenu extends StatelessWidget {
   const NavigationMenu({Key? key}) : super(key: key);

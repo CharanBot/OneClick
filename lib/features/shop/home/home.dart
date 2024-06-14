@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:one_click/features/shop/home/widgets/big_Square.dart';
-import 'package:one_click/features/shop/home/widgets/categories.dart';
-import 'package:one_click/features/shop/home/widgets/mostbooked.dart';
-import 'package:one_click/features/shop/home/widgets/searchbar.dart';
-import 'package:one_click/features/shop/home/widgets/promo_slider.dart';
-import 'package:one_click/nav_menu.dart';
+import 'package:only_click/features/shop/home/widgets/big_Square.dart';
+import 'package:only_click/features/shop/home/widgets/categories.dart';
+import 'package:only_click/features/shop/home/widgets/mostbooked.dart';
+import 'package:only_click/features/shop/home/widgets/searchbar.dart';
+import 'package:only_click/features/shop/home/widgets/promo_slider.dart';
+import 'package:only_click/nav_menu.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -18,7 +18,7 @@ class HomeScreen extends StatelessWidget {
 
     // Dummy user data
     const String userName = "Naga Charan";
-    const String userPhoneNumber = "+91 7207262274";
+    const String userPhoneNumber = "+91-7207262274";
 
     // Get the NavigationController instance
     final NavigationController navController = Get.find();
@@ -54,8 +54,9 @@ class HomeScreen extends StatelessWidget {
                               child: Text(
                                 'Welcome, $userName',
                                 style: TextStyle(
-                                  fontSize: 24,
-                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w500,
+                                  fontFamily: 'Poppins',
                                   color: darkMode ? Colors.white : Colors.black,
                                 ),
                               ),
@@ -135,8 +136,9 @@ class HomeScreen extends StatelessWidget {
                       child: Text(
                         'Most booked services',
                         style: TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
+                          fontSize: 26,
+                          fontWeight: FontWeight.w800,
+                          fontFamily: 'Raleway',
                           color: darkMode ? Colors.white : Colors.black,
                         ),
                       ),

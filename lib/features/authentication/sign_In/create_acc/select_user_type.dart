@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:one_click/features/authentication/sign_In/create_acc/individual_create_acc.dart';
-import 'package:one_click/features/authentication/sign_In/create_acc/service_provider_create_acc.dart';
+import 'package:only_click/features/authentication/sign_In/create_acc/individual_create_acc.dart';
+import 'package:only_click/features/authentication/sign_In/create_acc/service_provider_create_acc.dart';
 
 class SelectionPage extends StatefulWidget {
   @override

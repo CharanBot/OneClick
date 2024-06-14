@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:one_click/animations/FadeAnimation.dart';
-import 'package:one_click/features/shop/store/dummy/date_time.dart';
+import 'package:only_click/animations/FadeAnimation.dart';
+import 'package:only_click/features/shop/store/dummy/date_time.dart';
 
 class CleaningPage extends StatefulWidget {
   const CleaningPage({Key? key}) : super(key: key);

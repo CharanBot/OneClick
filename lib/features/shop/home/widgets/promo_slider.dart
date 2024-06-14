@@ -1,7 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:one_click/features/shop/controllers/home_controller.dart';
+import 'package:only_click/features/shop/controllers/home_controller.dart';
 
 class PromoSlider extends StatelessWidget {
   const PromoSlider({

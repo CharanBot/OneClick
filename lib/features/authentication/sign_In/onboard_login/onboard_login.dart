@@ -3,8 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:get/get.dart';
-import 'package:one_click/features/authentication/sign_In/create_acc/select_user_type.dart';
-import 'package:one_click/nav_menu.dart';
+import 'package:only_click/features/authentication/sign_In/create_acc/select_user_type.dart';
+import 'package:only_click/nav_menu.dart';
 
 class Onboard_login extends StatefulWidget {
   const Onboard_login({Key? key}) : super(key: key);
@@ -43,7 +43,7 @@ class _Onboard_loginState extends State<Onboard_login> {
               height: screenHeight * 0.5,
               child: Column(
                 children: [
-                  const SizedBox(height: 24),
+                  const SizedBox(height: 44),
                   Expanded(
                     child: CarouselSlider(
                       items: imgList
@@ -66,14 +66,6 @@ class _Onboard_loginState extends State<Onboard_login> {
                     ),
                   ),
                   const SizedBox(height: 1),
-                  Text(
-                    textList[_current],
-                    style: TextStyle(
-                      color: isDark ? Colors.white : Colors.black,
-                      fontWeight: FontWeight.bold,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: imgList.asMap().entries.map((entry) {
@@ -95,15 +87,27 @@ class _Onboard_loginState extends State<Onboard_login> {
                       );
                     }).toList(),
                   ),
+                  const SizedBox(height: 10),
+                  Text(
+                    textList[_current],
+                    style: TextStyle(
+                      color: isDark ? Colors.white : Colors.black,
+                      fontWeight: FontWeight.w500,
+                      fontFamily: 'Poppins',
+                      fontSize: 15,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
                 ],
               ),
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 35),
             Text(
               'Only Click',
               style: TextStyle(
                   fontSize: 55,
-                  fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.w800,
+                  fontFamily: 'Raleway',
                   color: isDark ? Colors.white : Colors.black),
               textAlign: TextAlign.center,
             ),
@@ -133,6 +137,7 @@ class _Onboard_loginState extends State<Onboard_login> {
                             color: isDark ? Colors.white : Colors.white,
                             fontSize: 14,
                             fontWeight: FontWeight.bold,
+                            fontFamily: 'Raleway',
                             decoration: TextDecoration.underline,
                           ),
                         ),
@@ -149,6 +154,8 @@ class _Onboard_loginState extends State<Onboard_login> {
                           Text(
                             'or',
                             style: TextStyle(
+                                fontFamily: 'Raleway',
+                                fontWeight: FontWeight.w300,
                                 color: isDark ? Colors.white : Colors.white),
                             textAlign: TextAlign.center,
                           ),
@@ -164,6 +171,8 @@ class _Onboard_loginState extends State<Onboard_login> {
                       Text(
                         'Sign in using',
                         style: TextStyle(
+                            fontFamily: 'Raleway',
+                            fontWeight: FontWeight.w400,
                             color: isDark ? Colors.white : Colors.white),
                         textAlign: TextAlign.center,
                       ),
@@ -177,8 +186,8 @@ class _Onboard_loginState extends State<Onboard_login> {
                             },
                             child: Image.asset(
                               'assets/logos/google-icon.png',
-                              width: 40,
-                              height: 40,
+                              width: 45,
+                              height: 45,
                             ),
                           ),
                           const SizedBox(width: 40),
@@ -187,18 +196,9 @@ class _Onboard_loginState extends State<Onboard_login> {
                               // Handle the onTap event
                             },
                             child: Image.asset(
-                              'assets/logos/facebook-icon.png',
+                              'assets/logos/apple_icon.png',
                               width: 40,
-                              height: 40,
-                            ),
-                          ),
-                          const SizedBox(width: 40),
-                          GestureDetector(
-                            onTap: () {},
-                            child: Image.asset(
-                              'assets/logos/google-icon.png',
-                              width: 40,
-                              height: 40,
+                              height: 34,
                             ),
                           ),
                         ],
@@ -221,13 +221,15 @@ class _Onboard_loginState extends State<Onboard_login> {
                           borderRadius: BorderRadius.circular(30.0),
                         ),
                         padding: const EdgeInsets.symmetric(
-                            horizontal: 50.0, vertical: 15.0),
+                            horizontal: 32.0, vertical: 15.0),
                       ),
                       child: Text(
                         'Create a new account',
                         style: TextStyle(
                             color: isDark ? Colors.white : Colors.black,
-                            fontSize: 16),
+                            fontSize: 17,
+                            fontFamily: 'Raleway',
+                            fontWeight: FontWeight.w600),
                       ),
                     ),
                   ),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
-import 'package:one_click/features/authentication/select_language/select_language.dart';
+import 'package:only_click/features/authentication/select_language/select_language.dart';
 
 class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);

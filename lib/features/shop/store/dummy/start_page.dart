@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'dart:math';
-import 'package:one_click/animations/FadeAnimation.dart';
-import 'package:one_click/features/shop/store/dummy/model/service.dart';
-import 'package:one_click/features/shop/store/dummy/select_service.dart';
+import 'package:only_click/animations/FadeAnimation.dart';
+import 'package:only_click/features/shop/store/dummy/model/service.dart';
+import 'package:only_click/features/shop/store/dummy/select_service.dart';
 import 'package:flutter/material.dart';
 
 class StartPage extends StatefulWidget {

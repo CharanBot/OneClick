@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:one_click/app.dart';
+import 'package:only_click/app.dart';
 // import 'package:flutter_native_splash/flutter_native_splash.dart';
 // import 'package:get_storage/get_storage.dart';
 
