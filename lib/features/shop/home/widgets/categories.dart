@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'category_bottom_sheet.dart';
 
 class THomeCategories extends StatelessWidget {
   const THomeCategories({
@@ -12,65 +12,97 @@ class THomeCategories extends StatelessWidget {
     final imageWidth = (screenWidth - 32 - 16 * 2) /
         3; // Calculating image width based on screen width and padding
 
+    final categories = [
+      {
+        'title': 'Plumbing',
+        'image': 'assets/icons/categories/plumbing.png',
+        'variations': ['Pipe Fitting', 'Leak Repair', 'Drain Cleaning']
+      },
+      {
+        'title': 'Carpenter',
+        'image': 'assets/icons/categories/Carpenter.png',
+        'variations': [
+          'Furniture Making',
+          'Wood Repair',
+          'Cabinet Installation'
+        ]
+      },
+      {
+        'title': 'Mechanic',
+        'image': 'assets/icons/categories/Mechanic.png',
+        'variations': ['Engine Repair', 'Oil Change', 'Brake Repair']
+      },
+      {
+        'title': 'Cleaning',
+        'image': 'assets/icons/categories/Mopping Girl.png',
+        'variations': ['House Cleaning', 'Office Cleaning', 'Window Cleaning']
+      },
+      {
+        'title': 'Electrician',
+        'image': 'assets/icons/categories/Electrician.png',
+        'variations': ['Wiring', 'Light Installation', 'Socket Repair']
+      },
+      {
+        'title': 'Painting',
+        'image': 'assets/icons/categories/Decorator.png',
+        'variations': [
+          'Wall Painting',
+          'Furniture Painting',
+          'Exterior Painting'
+        ]
+      },
+    ];
+
     return Column(
       children: [
         SizedBox(
           height: 130,
           child: Row(
-            children: [
-              TVerticalImageText(
+            children: categories.sublist(0, 3).map((category) {
+              return TVerticalImageText(
                 color: const Color.fromARGB(255, 243, 243, 243),
-                title: 'Plumbing',
+                title: category['title'] as String,
                 width: imageWidth,
-                onTap: () => Get.to(() => const SubCategoriesScreen()),
-                assetImage: 'assets/icons/categories/plumbing.png',
-              ),
-              TVerticalImageText(
-                color: const Color.fromARGB(255, 243, 243, 243),
-                title: 'Carpenter',
-                width: imageWidth,
-                onTap: () => Get.to(() => const SubCategoriesScreen()),
-                assetImage: 'assets/icons/categories/Carpenter.png',
-              ),
-              TVerticalImageText(
-                color: const Color.fromARGB(255, 243, 243, 243),
-                title: 'Mechanic',
-                width: imageWidth,
-                onTap: () => Get.to(() => const SubCategoriesScreen()),
-                assetImage: 'assets/icons/categories/Mechanic.png',
-              ),
-            ],
+                onTap: () => showCategoryBottomSheet(
+                    context,
+                    category['title'] as String,
+                    category['variations'] as List<String>),
+                assetImage: category['image'] as String,
+              );
+            }).toList(),
           ),
         ),
         SizedBox(
           height: 130,
           child: Row(
-            children: [
-              TVerticalImageText(
+            children: categories.sublist(3, 6).map((category) {
+              return TVerticalImageText(
                 color: const Color.fromARGB(255, 243, 243, 243),
-                title: 'Cleaning',
+                title: category['title'] as String,
                 width: imageWidth,
-                onTap: () => Get.to(() => const SubCategoriesScreen()),
-                assetImage: 'assets/icons/categories/Mopping Girl.png',
-              ),
-              TVerticalImageText(
-                color: const Color.fromARGB(255, 243, 243, 243),
-                title: 'Electrician',
-                width: imageWidth,
-                onTap: () => Get.to(() => const SubCategoriesScreen()),
-                assetImage: 'assets/icons/categories/Electrician.png',
-              ),
-              TVerticalImageText(
-                color: const Color.fromARGB(255, 243, 243, 243),
-                title: 'Painting',
-                width: imageWidth,
-                onTap: () => Get.to(() => const SubCategoriesScreen()),
-                assetImage: 'assets/icons/categories/Decorator.png',
-              ),
-            ],
+                onTap: () => showCategoryBottomSheet(
+                    context,
+                    category['title'] as String,
+                    category['variations'] as List<String>),
+                assetImage: category['image'] as String,
+              );
+            }).toList(),
           ),
         ),
       ],
+    );
+  }
+
+  void showCategoryBottomSheet(
+      BuildContext context, String category, List<String> variations) {
+    showModalBottomSheet(
+      context: context,
+      builder: (context) {
+        return CategoryBottomSheet(
+          category: category,
+          variations: variations,
+        );
+      },
     );
   }
 }

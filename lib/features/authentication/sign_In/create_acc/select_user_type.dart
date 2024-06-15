@@ -13,16 +13,16 @@ class _SelectionPageState extends State<SelectionPage> {
 
   final Map<String, Map<String, String>> optionDetails = {
     'Default': {
-      'image': 'assets/images/OnBoarding/board_1.gif',
+      'image': 'assets/images/OnBoarding/individual.gif',
       'description': 'Please select an option to proceed.',
     },
     'Individual': {
-      'image': 'assets/images/OnBoarding/board_3.gif',
+      'image': 'assets/images/OnBoarding/individual.gif',
       'description':
           'You have selected Individual. This option is for personal use. It provides access to features tailored for individuals.',
     },
     'Service Provider': {
-      'image': 'assets/images/OnBoarding/board_2.gif',
+      'image': 'assets/images/OnBoarding/service_provider.gif',
       'description':
           'You have selected Service Provider. This option is for FreeLancers looking for job oppurtunities.',
     },
@@ -54,7 +54,7 @@ class _SelectionPageState extends State<SelectionPage> {
                   children: [
                     Image.asset(
                       optionDetails[displayOption]!['image']!,
-                      width: 200,
+                      width: 300,
                       height: 200,
                     ),
                     const SizedBox(height: 30), // space above descrip

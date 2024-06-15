@@ -18,9 +18,9 @@ class _Onboard_loginState extends State<Onboard_login> {
   final CarouselController _controller = CarouselController();
 
   final List<String> imgList = [
-    'assets/images/OnBoarding/banner-1.gif',
-    'assets/images/OnBoarding/banner-3.gif',
-    'assets/images/OnBoarding/banner-3.gif',
+    'assets/images/OnBoarding/onboard_1.gif',
+    'assets/images/OnBoarding/onboard_2.gif',
+    'assets/images/OnBoarding/onboard_3.gif',
   ];
 
   final List<String> textList = [
@@ -43,16 +43,19 @@ class _Onboard_loginState extends State<Onboard_login> {
               height: screenHeight * 0.5,
               child: Column(
                 children: [
-                  const SizedBox(height: 44),
+                  const SizedBox(height: 84),
                   Expanded(
                     child: CarouselSlider(
-                      items: imgList
-                          .map((item) => Image.asset(
-                                item,
-                                fit: BoxFit.cover,
-                                width: 1000,
-                              ))
-                          .toList(),
+                      items: imgList.asMap().entries.map((entry) {
+                        final index = entry.key;
+                        final item = entry.value;
+                        final width = index == 2 ? 230.0 : 500.0;
+                        return Image.asset(
+                          item,
+                          fit: BoxFit.cover,
+                          width: width,
+                        );
+                      }).toList(),
                       carouselController: _controller,
                       options: CarouselOptions(
                           autoPlay: true,
@@ -66,6 +69,17 @@ class _Onboard_loginState extends State<Onboard_login> {
                     ),
                   ),
                   const SizedBox(height: 1),
+                  Text(
+                    textList[_current],
+                    style: TextStyle(
+                      color: isDark ? Colors.white : Colors.black,
+                      fontWeight: FontWeight.w500,
+                      fontFamily: 'Poppins',
+                      fontSize: 15,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(height: 10),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: imgList.asMap().entries.map((entry) {
@@ -87,17 +101,6 @@ class _Onboard_loginState extends State<Onboard_login> {
                       );
                     }).toList(),
                   ),
-                  const SizedBox(height: 10),
-                  Text(
-                    textList[_current],
-                    style: TextStyle(
-                      color: isDark ? Colors.white : Colors.black,
-                      fontWeight: FontWeight.w500,
-                      fontFamily: 'Poppins',
-                      fontSize: 15,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
                 ],
               ),
             ),
@@ -111,7 +114,7 @@ class _Onboard_loginState extends State<Onboard_login> {
                   color: isDark ? Colors.white : Colors.black),
               textAlign: TextAlign.center,
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 25),
             Stack(
               children: [
                 Container(
