@@ -7,27 +7,35 @@ class ProductListPage extends StatelessWidget {
   static List<Product> sampleProducts = [
     Product(
       title: 'Venkata Sai Dheeraj',
-      category: 'Burger',
+      location: 'Italy',
+      experience: 5,
+      isAvailable: true,
       imageAssetPath: 'assets/icons/mostbooked/laptop_repair.jpg',
-      price: '\$45',
+      rating: 4.5,
     ),
     Product(
       title: 'Venu Charan',
-      category: 'Pizza',
+      location: 'Ohio',
+      experience: 3,
+      isAvailable: false,
       imageAssetPath: 'assets/icons/mostbooked/laptop_repair.jpg',
-      price: '\$30',
+      rating: 4.0,
     ),
     Product(
       title: 'Phanishwar Jonnalagadda',
-      category: 'Salad',
+      location: 'Gujarat',
+      experience: 4,
+      isAvailable: true,
       imageAssetPath: 'assets/icons/mostbooked/laptop_repair.jpg',
-      price: '\$20',
+      rating: 3.5,
     ),
     Product(
       title: 'Shanmuka Jonnalagadda',
-      category: 'Sandwich',
+      location: 'Canada',
+      experience: 6,
+      isAvailable: true,
       imageAssetPath: 'assets/icons/mostbooked/laptop_repair.jpg',
-      price: '\$15',
+      rating: 4.8,
     ),
   ];
 
@@ -45,34 +53,26 @@ class ProductListPage extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const SizedBox(height: 16), //space above the first card
-
-            // Products list
-            Column(
-              children: sampleProducts.map((product) {
-                return Column(
-                  children: [
-                    ProductCardWidget(
-                      product: product,
-                      darkMode: darkMode,
-                    ),
-                    if (product !=
-                        sampleProducts.last) // Added divider conditionally
-                      Divider(
-                        thickness: 0.2,
-                        color: darkMode ? Colors.white : Colors.black,
-                        indent:
-                            136, // indent to align with image width + spacing
-                        endIndent: 16,
-                      ),
-                  ],
-                );
-              }).toList(),
-            ),
-          ],
+        child: ListView.builder(
+          itemCount: sampleProducts.length,
+          itemBuilder: (context, index) {
+            final product = sampleProducts[index];
+            return Column(
+              children: [
+                ProductCardWidget(
+                  product: product,
+                  darkMode: darkMode,
+                ),
+                if (product != sampleProducts.last)
+                  Divider(
+                    thickness: 0.2,
+                    color: darkMode ? Colors.white : Colors.black,
+                    indent: 136, // indent to align with image width + spacing
+                    endIndent: 16,
+                  ),
+              ],
+            );
+          },
         ),
       ),
     );
@@ -101,87 +101,155 @@ class ProductCardWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(15),
         color: cardColor,
       ),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      child: Stack(
         children: [
-          // Thumbnail Image with Favorite Icon
-          Stack(
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
-                height: 120,
-                width: 120,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: darkMode ? Colors.grey[800] : Colors.grey[300],
-                ),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(10),
-                  child: Image.asset(
-                    product.imageAssetPath,
-                    fit: BoxFit.cover,
+              // Thumbnail Image with Favorite Icon
+              Stack(
+                children: [
+                  Container(
+                    height: 120,
+                    width: 120,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: darkMode ? Colors.grey[800] : Colors.grey[300],
+                    ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(10),
+                      child: Image.asset(
+                        product.imageAssetPath,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
                   ),
-                ),
+                  Positioned(
+                    top: 8,
+                    right: 8,
+                    child: FavoriteIcon(
+                      darkMode: darkMode,
+                    ),
+                  ),
+                ],
               ),
-              Positioned(
-                top: 8,
-                right: 8,
-                child: FavoriteIcon(
-                  darkMode: darkMode,
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(width: 16),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  product.title,
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                    color: textColor,
-                  ),
-                ),
-                const SizedBox(height: 8),
-                Text(
-                  product.category,
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: Colors.grey[600],
-                  ),
-                ),
-                const SizedBox(height: 16),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              const SizedBox(width: 16),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // Pricing
                     Text(
-                      product.price,
+                      product.title,
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
                         color: textColor,
                       ),
                     ),
-                    // next button icon
-                    Container(
-                      width: 40,
-                      height: 40,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: darkMode ? Colors.grey[800] : Colors.grey[200],
-                      ),
-                      child: IconButton(
-                        icon: const Icon(Icons.chevron_right),
-                        onPressed: () {},
-                        color: textColor,
-                      ),
+                    const SizedBox(height: 8),
+                    Row(
+                      children: [
+                        Icon(Icons.location_on, color: textColor),
+                        const SizedBox(width: 4),
+                        Expanded(
+                          child: Text(
+                            product.location,
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: Colors.grey[600],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 8),
+                    Row(
+                      children: [
+                        Icon(Icons.work, color: textColor),
+                        const SizedBox(width: 4),
+                        Expanded(
+                          child: Text(
+                            '${product.experience} years of the experience',
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: Colors.grey[600],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 8),
+                    Row(
+                      children: [
+                        Icon(
+                          product.isAvailable
+                              ? Icons.check_circle
+                              : Icons.cancel,
+                          color:
+                              product.isAvailable ? Colors.green : Colors.red,
+                        ),
+                        const SizedBox(width: 4),
+                        Text(
+                          product.isAvailable ? 'Available' : 'Not Available',
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.grey[600],
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
-              ],
+              ),
+            ],
+          ),
+          // Ratings Display with star_outline icon
+          Positioned(
+            top: 0,
+            left: 0,
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+              decoration: const BoxDecoration(
+                color: Color.fromARGB(255, 195, 175, 0),
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(10),
+                  bottomRight: Radius.circular(10),
+                ),
+              ),
+              child: Row(
+                children: [
+                  Text(
+                    product.rating.toString(),
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(width: 4), // Spacing between rating and icon
+                  const Icon(
+                    Icons.star_outline,
+                    color: Colors.white,
+                    size: 16,
+                  ),
+                ],
+              ),
+            ),
+          ),
+          Positioned(
+            bottom: -0,
+            right: 0,
+            child: Container(
+              width: 40,
+              height: 40,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: darkMode ? Colors.grey[800] : Colors.grey[200],
+              ),
+              child: IconButton(
+                icon: const Icon(Icons.chevron_right),
+                onPressed: () {},
+                color: textColor,
+              ),
             ),
           ),
         ],
@@ -229,7 +297,7 @@ class _FavoriteIconState extends State<FavoriteIcon> {
           child: Icon(
             Icons.favorite,
             size: 24,
-            color: iconColor, // Use iconColor to dynamically set the icon color
+            color: iconColor,
           ),
         ),
       ),
@@ -239,14 +307,18 @@ class _FavoriteIconState extends State<FavoriteIcon> {
 
 class Product {
   final String title;
-  final String category;
+  final String location;
+  final int experience;
+  final bool isAvailable;
   final String imageAssetPath;
-  final String price;
+  final double rating;
 
   Product({
     required this.title,
-    required this.category,
+    required this.location,
+    required this.experience,
+    required this.isAvailable,
     required this.imageAssetPath,
-    required this.price,
+    required this.rating,
   });
 }

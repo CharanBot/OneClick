@@ -3,8 +3,8 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:only_click/features/shop/chat/chat.dart';
 import 'package:only_click/features/shop/home/home.dart';
-import 'package:only_click/features/shop/profile/account_settings.dart';
-import 'package:only_click/features/shop/store/dummy/start_page.dart';
+import 'package:only_click/features/personalisation/profile/account_settings.dart';
+import 'package:only_click/features/shop/store/store.dart';
 
 class NavigationMenu extends StatelessWidget {
   const NavigationMenu({Key? key}) : super(key: key);
@@ -48,7 +48,7 @@ class NavigationController extends GetxController {
 
   final screens = [
     const HomeScreen(),
-    const StartPage(),
+    const StoreScreen(),
     const ChatScreen(),
     const AccountPage(),
   ];
