@@ -13,18 +13,16 @@ class _SelectionPageState extends State<SelectionPage> {
 
   final Map<String, Map<String, String>> optionDetails = {
     'Default': {
-      'image': 'assets/images/OnBoarding/individual.gif',
+      'image': 'assets/images/OnBoarding/onboard_3.gif',
       'description': 'Please select an option to proceed.',
     },
     'Individual': {
-      'image': 'assets/images/OnBoarding/individual.gif',
-      'description':
-          'You have selected Individual. This option is for personal use. It provides access to features tailored for individuals.',
+      'image': 'assets/images/OnBoarding/service_provider.gif',
+      'description': 'I need people to fix my problems.',
     },
     'Service Provider': {
-      'image': 'assets/images/OnBoarding/service_provider.gif',
-      'description':
-          'You have selected Service Provider. This option is for FreeLancers looking for job oppurtunities.',
+      'image': 'assets/images/OnBoarding/individual.gif',
+      'description': 'I am looking for job oppurtunities.',
     },
   };
 
@@ -33,7 +31,9 @@ class _SelectionPageState extends State<SelectionPage> {
     bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
     Color textColor = isDarkMode ? Colors.white : Colors.black;
     Color nonSelectedButtonColor = isDarkMode ? Colors.grey : Colors.grey[300]!;
-    Color buttonColor = isDarkMode ? Colors.blue : Colors.black;
+    Color buttonColor = isDarkMode
+        ? const Color.fromARGB(255, 32, 22, 88)
+        : const Color.fromARGB(255, 32, 22, 88);
 
     // Determine which details to show
     String displayOption =
@@ -62,6 +62,8 @@ class _SelectionPageState extends State<SelectionPage> {
                       optionDetails[displayOption]!['description']!,
                       textAlign: TextAlign.center,
                       style: TextStyle(
+                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.w500,
                         fontSize: 18,
                         color: textColor,
                       ),
@@ -84,7 +86,13 @@ class _SelectionPageState extends State<SelectionPage> {
                           : nonSelectedButtonColor,
                       foregroundColor: textColor,
                     ),
-                    child: const Text('Individual'),
+                    child: const Text(
+                      'Individual',
+                      style: TextStyle(
+                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
                   ),
                 ),
                 const SizedBox(height: 20),
@@ -103,7 +111,13 @@ class _SelectionPageState extends State<SelectionPage> {
                           : nonSelectedButtonColor,
                       foregroundColor: textColor,
                     ),
-                    child: const Text('Service Provider'),
+                    child: const Text(
+                      'Service Provider',
+                      style: TextStyle(
+                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
                   ),
                 ),
               ],
@@ -115,9 +129,9 @@ class _SelectionPageState extends State<SelectionPage> {
             child: FloatingActionButton(
               onPressed: () {
                 if (selectedButton == 'Individual') {
-                  Get.to(IndividualPage());
+                  Get.to(() => IndividualPage());
                 } else if (selectedButton == 'Service Provider') {
-                  Get.to(ServiceProviderPage());
+                  Get.to(() => ServiceProviderPage());
                 }
               },
               backgroundColor: buttonColor,

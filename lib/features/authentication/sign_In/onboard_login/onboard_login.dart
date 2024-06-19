@@ -216,7 +216,7 @@ class _Onboard_loginState extends State<Onboard_login> {
                   child: Center(
                     child: ElevatedButton(
                       onPressed: () {
-                        Get.to(SelectionPage());
+                        Get.to(() => SelectionPage());
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.orange,

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:only_click/features/personalisation/profile/Constants_profile/Constants.dart';
-import 'package:only_click/Widgets_profile/Widgets.dart';
+import 'package:only_click/features/personalisation/profile/Widgets_profile/Widgets.dart';
 import 'package:only_click/features/personalisation/profile/pages/edit_profile.dart';
 
 class AccountPage extends StatefulWidget {

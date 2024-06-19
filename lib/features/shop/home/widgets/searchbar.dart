@@ -89,8 +89,8 @@ class _SearchContainerState extends State<SearchContainer>
         height: 60,
         decoration: BoxDecoration(
           color: widget.darkMode
-              ? Colors.white.withOpacity(0.4)
-              : Colors.black.withOpacity(0.05),
+              ? Colors.white.withOpacity(0.25)
+              : Colors.black.withOpacity(0.1),
           borderRadius: BorderRadius.circular(16),
         ),
         child: ClipRRect(
@@ -101,6 +101,7 @@ class _SearchContainerState extends State<SearchContainer>
               children: [
                 const Icon(
                   Icons.search,
+                  color: Colors.teal,
                 ),
                 const SizedBox(width: 8),
                 Expanded(

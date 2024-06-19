@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:only_click/features/shop/chat/chat.dart';
+import 'package:only_click/features/personalisation/chat/chat_list_page.dart';
 import 'package:only_click/features/shop/home/home.dart';
 import 'package:only_click/features/personalisation/profile/account_settings.dart';
 import 'package:only_click/features/shop/store/store.dart';
@@ -49,7 +49,7 @@ class NavigationController extends GetxController {
   final screens = [
     const HomeScreen(),
     const StoreScreen(),
-    const ChatScreen(),
+    const ChatListPage(),
     const AccountPage(),
   ];
   void goToChats() {

@@ -48,7 +48,13 @@ class ProductListPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: darkMode ? Colors.grey[900] : Colors.white,
       appBar: AppBar(
-        title: const Text('Service Providers'),
+        title: const Text(
+          'Service Providers',
+          style: TextStyle(
+              fontFamily: 'Poppins',
+              fontWeight: FontWeight.w500,
+              color: Colors.teal),
+        ),
         backgroundColor: darkMode ? Colors.grey[900] : Colors.white,
       ),
       body: Padding(
@@ -141,8 +147,9 @@ class ProductCardWidget extends StatelessWidget {
                     Text(
                       product.title,
                       style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
+                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.w500,
+                        fontSize: 17,
                         color: textColor,
                       ),
                     ),
@@ -155,6 +162,8 @@ class ProductCardWidget extends StatelessWidget {
                           child: Text(
                             product.location,
                             style: TextStyle(
+                              fontFamily: 'Poppins',
+                              fontWeight: FontWeight.w500,
                               fontSize: 16,
                               color: Colors.grey[600],
                             ),
@@ -171,6 +180,8 @@ class ProductCardWidget extends StatelessWidget {
                           child: Text(
                             '${product.experience} years of the experience',
                             style: TextStyle(
+                              fontFamily: 'Poppins',
+                              fontWeight: FontWeight.w500,
                               fontSize: 16,
                               color: Colors.grey[600],
                             ),
@@ -192,6 +203,8 @@ class ProductCardWidget extends StatelessWidget {
                         Text(
                           product.isAvailable ? 'Available' : 'Not Available',
                           style: TextStyle(
+                            fontFamily: 'Poppins',
+                            fontWeight: FontWeight.w500,
                             fontSize: 16,
                             color: Colors.grey[600],
                           ),
@@ -241,14 +254,15 @@ class ProductCardWidget extends StatelessWidget {
             child: Container(
               width: 40,
               height: 40,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: darkMode ? Colors.grey[800] : Colors.grey[200],
-              ),
+              decoration: const BoxDecoration(
+                  shape: BoxShape.circle,
+                  // color: darkMode ? Colors.grey[800] : Colors.grey[200],
+                  color: Colors.teal),
               child: IconButton(
                 icon: const Icon(Icons.chevron_right),
                 onPressed: () {},
-                color: textColor,
+                // color: textColor,
+                color: Colors.white,
               ),
             ),
           ),

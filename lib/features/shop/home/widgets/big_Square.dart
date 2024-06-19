@@ -27,8 +27,8 @@ class BigRoundEdgedSquare extends StatelessWidget {
           left: 20.0,
           child: ElevatedButton(
             style: ElevatedButton.styleFrom(
-              foregroundColor: Colors.black,
-              backgroundColor: Colors.white,
+              foregroundColor: Colors.white, // black
+              backgroundColor: Colors.teal, //white
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10.0),
               ),

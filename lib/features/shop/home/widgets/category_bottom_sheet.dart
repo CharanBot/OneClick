@@ -45,11 +45,12 @@ class CategoryBottomSheet extends StatelessWidget {
             Center(
               child: Text(
                 category,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 22,
                   fontWeight: FontWeight.w800,
                   fontFamily: 'Poppins',
-                  color: darkMode ? Colors.white : Colors.black,
+                  // color: darkMode ? Colors.white : Colors.black,
+                  color: Colors.teal,
                 ),
               ),
             ),
