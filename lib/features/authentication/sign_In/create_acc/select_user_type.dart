@@ -22,7 +22,7 @@ class _SelectionPageState extends State<SelectionPage> {
     },
     'Service Provider': {
       'image': 'assets/images/OnBoarding/individual.gif',
-      'description': 'I am looking for job oppurtunities.',
+      'description': 'I am looking for job opportunities.',
     },
   };
 
@@ -30,10 +30,8 @@ class _SelectionPageState extends State<SelectionPage> {
   Widget build(BuildContext context) {
     bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
     Color textColor = isDarkMode ? Colors.white : Colors.black;
-    Color nonSelectedButtonColor = isDarkMode ? Colors.grey : Colors.grey[300]!;
-    Color buttonColor = isDarkMode
-        ? const Color.fromARGB(255, 32, 22, 88)
-        : const Color.fromARGB(255, 32, 22, 88);
+    Color nonSelectedButtonColor =
+        isDarkMode ? Colors.transparent : Colors.transparent;
 
     // Determine which details to show
     String displayOption =
@@ -72,8 +70,8 @@ class _SelectionPageState extends State<SelectionPage> {
                   ],
                 ),
                 SizedBox(
-                  width: 300,
-                  height: 55,
+                  width: 240,
+                  height: 65,
                   child: ElevatedButton(
                     onPressed: () {
                       setState(() {
@@ -85,20 +83,27 @@ class _SelectionPageState extends State<SelectionPage> {
                           ? Colors.orange
                           : nonSelectedButtonColor,
                       foregroundColor: textColor,
+                      side: selectedButton == 'Individual'
+                          ? BorderSide.none
+                          : const BorderSide(
+                              color: Colors.grey,
+                              width: 2.0,
+                            ),
                     ),
                     child: const Text(
                       'Individual',
                       style: TextStyle(
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.w500,
+                        fontSize: 18,
                       ),
                     ),
                   ),
                 ),
                 const SizedBox(height: 20),
                 SizedBox(
-                  width: 300,
-                  height: 55,
+                  width: 240,
+                  height: 65,
                   child: ElevatedButton(
                     onPressed: () {
                       setState(() {
@@ -110,12 +115,19 @@ class _SelectionPageState extends State<SelectionPage> {
                           ? Colors.orange
                           : nonSelectedButtonColor,
                       foregroundColor: textColor,
+                      side: selectedButton == 'Service Provider'
+                          ? BorderSide.none
+                          : const BorderSide(
+                              color: Colors.grey,
+                              width: 2.0,
+                            ),
                     ),
                     child: const Text(
                       'Service Provider',
                       style: TextStyle(
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.w500,
+                        fontSize: 18,
                       ),
                     ),
                   ),
@@ -134,7 +146,7 @@ class _SelectionPageState extends State<SelectionPage> {
                   Get.to(() => ServiceProviderPage());
                 }
               },
-              backgroundColor: buttonColor,
+              backgroundColor: const Color.fromARGB(255, 32, 22, 88),
               foregroundColor: Colors.white,
               child: const Icon(Icons.arrow_circle_right),
             ),

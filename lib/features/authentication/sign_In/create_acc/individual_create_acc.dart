@@ -20,7 +20,10 @@ class IndividualPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Create Individual Account'),
+        title: const Text(
+          'Create Account',
+          style: TextStyle(fontFamily: 'Poppins'),
+        ),
         backgroundColor: Colors.deepPurple,
       ),
       body: SingleChildScrollView(
