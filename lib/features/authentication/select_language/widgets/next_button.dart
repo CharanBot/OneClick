@@ -8,9 +8,9 @@ class BotButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Brightness brightnessValue =
-        MediaQuery.of(context).platformBrightness;
-    final bool isDark = brightnessValue == Brightness.dark;
+    // final Brightness brightnessValue =
+    //     MediaQuery.of(context).platformBrightness;
+    // final bool isDark = brightnessValue == Brightness.dark;
 
     return ElevatedButton(
       onPressed: () {
@@ -18,7 +18,7 @@ class BotButton extends StatelessWidget {
       },
       style: ElevatedButton.styleFrom(
         shape: const CircleBorder(),
-        backgroundColor: isDark ? Colors.blue : Colors.black,
+        backgroundColor: Colors.teal,
         padding: const EdgeInsets.all(22.0),
       ),
       child: const Icon(

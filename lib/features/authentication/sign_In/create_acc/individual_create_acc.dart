@@ -6,15 +6,21 @@ class IndividualPage extends StatelessWidget {
 
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _phoneNumberController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _confirmPasswordController =
-      TextEditingController();
+  final TextEditingController _otpController = TextEditingController();
   final TextEditingController _locationController = TextEditingController();
   final RxBool _agreeToTerms = false.obs;
-  final RxBool _hidePassword = true.obs;
-  final RxBool _hideConfirmPassword = true.obs;
 
   IndividualPage({super.key});
+
+  void _sendOtp() {
+    // Function to send OTP to the phone number
+    print("OTP sent to ${_phoneNumberController.text}");
+  }
+
+  void _verifyOtp() {
+    // Function to verify OTP
+    print("OTP verified: ${_otpController.text}");
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +30,7 @@ class IndividualPage extends StatelessWidget {
           'Create Account',
           style: TextStyle(fontFamily: 'Poppins'),
         ),
-        backgroundColor: Colors.deepPurple,
+        backgroundColor: Colors.teal,
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20.0),
@@ -35,48 +41,42 @@ class IndividualPage extends StatelessWidget {
             children: [
               _buildTextField(_usernameController, 'Username', Icons.person),
               const SizedBox(height: 16),
-              _buildTextField(
-                  _phoneNumberController, 'Phone Number', Icons.phone),
-              const SizedBox(height: 16),
-              Obx(
-                () => _buildTextField(
-                  _passwordController,
-                  'Password',
-                  Icons.lock,
-                  obscureText: _hidePassword.value,
-                  toggleVisibility: () {
-                    _hidePassword.value = !_hidePassword.value;
-                  },
-                  isPassword: true,
-                  hidePassword: _hidePassword.value,
-                ),
+              Row(
+                children: [
+                  Expanded(
+                    child: _buildTextField(
+                        _phoneNumberController, 'Phone Number', Icons.phone),
+                  ),
+                  const SizedBox(width: 8),
+                  ElevatedButton(
+                    onPressed: _sendOtp,
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.teal,
+                        foregroundColor: Colors.white),
+                    child: const Text(
+                      'Send OTP',
+                      style: TextStyle(fontFamily: 'Poppins'),
+                    ),
+                  ),
+                ],
               ),
               const SizedBox(height: 16),
-              Obx(
-                () => _buildTextField(
-                  _confirmPasswordController,
-                  'Confirm Password',
-                  Icons.lock,
-                  obscureText: _hideConfirmPassword.value,
-                  toggleVisibility: () {
-                    _hideConfirmPassword.value = !_hideConfirmPassword.value;
-                  },
-                  isPassword: true,
-                  hidePassword: _hideConfirmPassword.value,
-                ),
-              ),
+              _buildTextField(_otpController, 'Enter OTP', Icons.verified,
+                  isOtp: true),
               const SizedBox(height: 16),
               _buildTextField(
                   _locationController, 'Location', Icons.location_on),
               const SizedBox(height: 16),
               Obx(
                 () => CheckboxListTile(
-                  title: const Text('I agree to the terms and conditions'),
+                  title: const Text('I agree to the terms and conditions',
+                      style: TextStyle(
+                          fontFamily: 'Poppins', fontWeight: FontWeight.w500)),
                   value: _agreeToTerms.value,
                   onChanged: (bool? value) {
                     _agreeToTerms.value = value!;
                   },
-                  activeColor: Colors.deepPurple,
+                  activeColor: Colors.teal,
                 ),
               ),
               const SizedBox(height: 32),
@@ -86,17 +86,23 @@ class IndividualPage extends StatelessWidget {
                   onPressed: () {
                     if (_formKey.currentState!.validate() &&
                         _agreeToTerms.value) {
-                      // Handle form submission
+                      _verifyOtp();
+                      // Handle form submission after OTP verification
                     }
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.deepPurple,
+                    backgroundColor: Colors.teal,
+                    foregroundColor: Colors.white,
                     padding: const EdgeInsets.symmetric(vertical: 16),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30.0),
                     ),
                   ),
-                  child: const Text('Confirm', style: TextStyle(fontSize: 18)),
+                  child: const Text('Confirm',
+                      style: TextStyle(
+                          fontFamily: 'Poppins',
+                          fontWeight: FontWeight.w500,
+                          fontSize: 18)),
                 ),
               ),
             ],
@@ -108,29 +114,19 @@ class IndividualPage extends StatelessWidget {
 
   Widget _buildTextField(
       TextEditingController controller, String labelText, IconData icon,
-      {bool obscureText = false,
-      bool isPassword = false,
-      bool hidePassword = false,
-      VoidCallback? toggleVisibility}) {
+      {bool isOtp = false}) {
     return TextFormField(
       controller: controller,
       decoration: InputDecoration(
         labelText: labelText,
-        prefixIcon: Icon(icon, color: Colors.deepPurple),
+        labelStyle: const TextStyle(fontFamily: 'Poppins'),
+        prefixIcon: Icon(icon, color: Colors.teal),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10.0),
         ),
-        suffixIcon: isPassword
-            ? IconButton(
-                icon: Icon(
-                  hidePassword ? Icons.visibility_off : Icons.visibility,
-                  color: Colors.deepPurple,
-                ),
-                onPressed: toggleVisibility,
-              )
-            : null,
       ),
-      obscureText: obscureText,
+      keyboardType: isOtp ? TextInputType.number : TextInputType.text,
+      style: const TextStyle(fontFamily: 'Poppins'),
       validator: (value) {
         if (value == null || value.isEmpty) {
           return 'Please enter your $labelText';
@@ -139,4 +135,14 @@ class IndividualPage extends StatelessWidget {
       },
     );
   }
+}
+
+void main() {
+  runApp(MaterialApp(
+    home: IndividualPage(),
+    theme: ThemeData(
+      primarySwatch: Colors.teal,
+      fontFamily: 'Poppins',
+    ),
+  ));
 }

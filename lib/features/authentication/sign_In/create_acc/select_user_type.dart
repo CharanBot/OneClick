@@ -31,7 +31,7 @@ class _SelectionPageState extends State<SelectionPage> {
     bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
     Color textColor = isDarkMode ? Colors.white : Colors.black;
     Color nonSelectedButtonColor =
-        isDarkMode ? Colors.transparent : Colors.transparent;
+        isDarkMode ? Colors.transparent : Colors.white;
 
     // Determine which details to show
     String displayOption =
@@ -80,7 +80,7 @@ class _SelectionPageState extends State<SelectionPage> {
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: selectedButton == 'Individual'
-                          ? Colors.orange
+                          ? Colors.teal
                           : nonSelectedButtonColor,
                       foregroundColor: textColor,
                       side: selectedButton == 'Individual'
@@ -112,7 +112,7 @@ class _SelectionPageState extends State<SelectionPage> {
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: selectedButton == 'Service Provider'
-                          ? Colors.orange
+                          ? Colors.teal
                           : nonSelectedButtonColor,
                       foregroundColor: textColor,
                       side: selectedButton == 'Service Provider'
@@ -146,7 +146,7 @@ class _SelectionPageState extends State<SelectionPage> {
                   Get.to(() => ServiceProviderPage());
                 }
               },
-              backgroundColor: const Color.fromARGB(255, 32, 22, 88),
+              backgroundColor: Colors.teal,
               foregroundColor: Colors.white,
               child: const Icon(Icons.arrow_circle_right),
             ),
@@ -155,4 +155,14 @@ class _SelectionPageState extends State<SelectionPage> {
       ),
     );
   }
+}
+
+void main() {
+  runApp(MaterialApp(
+    home: SelectionPage(),
+    theme: ThemeData(
+      primarySwatch: Colors.teal,
+      fontFamily: 'Poppins',
+    ),
+  ));
 }

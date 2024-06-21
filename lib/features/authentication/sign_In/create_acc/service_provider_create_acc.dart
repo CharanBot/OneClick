@@ -25,7 +25,8 @@ class ServiceProviderPage extends StatelessWidget {
           'Create Account',
           style: TextStyle(fontFamily: 'Poppins'),
         ),
-        backgroundColor: Colors.deepPurple,
+        backgroundColor: Colors.teal,
+        foregroundColor: Colors.white,
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20.0),
@@ -75,12 +76,14 @@ class ServiceProviderPage extends StatelessWidget {
               const SizedBox(height: 16),
               Obx(
                 () => CheckboxListTile(
-                  title: const Text('I agree to the terms and conditions'),
+                  title: const Text('I agree to the terms and conditions',
+                      style: TextStyle(
+                          fontFamily: 'Poppins', fontWeight: FontWeight.w500)),
                   value: _agreeToTerms.value,
                   onChanged: (bool? value) {
                     _agreeToTerms.value = value!;
                   },
-                  activeColor: Colors.deepPurple,
+                  activeColor: Colors.teal,
                 ),
               ),
               const SizedBox(height: 32),
@@ -94,13 +97,17 @@ class ServiceProviderPage extends StatelessWidget {
                     }
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.deepPurple,
+                    backgroundColor: Colors.teal,
                     padding: const EdgeInsets.symmetric(vertical: 16),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30.0),
                     ),
                   ),
-                  child: const Text('Confirm', style: TextStyle(fontSize: 18)),
+                  child: const Text('Confirm',
+                      style: TextStyle(
+                          fontSize: 18,
+                          fontFamily: 'Poppins',
+                          color: Colors.white)),
                 ),
               ),
             ],
@@ -120,7 +127,8 @@ class ServiceProviderPage extends StatelessWidget {
       controller: controller,
       decoration: InputDecoration(
         labelText: labelText,
-        prefixIcon: Icon(icon, color: Colors.deepPurple),
+        labelStyle: const TextStyle(fontFamily: 'Poppins'),
+        prefixIcon: Icon(icon, color: Colors.teal),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10.0),
         ),
@@ -128,13 +136,14 @@ class ServiceProviderPage extends StatelessWidget {
             ? IconButton(
                 icon: Icon(
                   hidePassword ? Icons.visibility_off : Icons.visibility,
-                  color: Colors.deepPurple,
+                  color: Colors.teal,
                 ),
                 onPressed: toggleVisibility,
               )
             : null,
       ),
       obscureText: obscureText,
+      style: const TextStyle(fontFamily: 'Poppins'),
       validator: (value) {
         if (value == null || value.isEmpty) {
           return 'Please enter your $labelText';
