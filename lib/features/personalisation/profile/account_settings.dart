@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_navigation/get_navigation.dart';
-import 'package:only_click/features/personalisation/profile/Constants_profile/Constants.dart';
-import 'package:only_click/features/personalisation/profile/Widgets_profile/Widgets.dart';
+import 'package:get/get.dart';
 import 'package:only_click/features/personalisation/profile/pages/edit_profile.dart';
 
 class AccountPage extends StatefulWidget {
@@ -39,21 +36,26 @@ class _AccountPageState extends State<AccountPage> {
   Widget userTile(bool darkMode) {
     return ListTile(
       leading: const CircleAvatar(
-        backgroundImage: NetworkImage(Urls.avatar1),
+        backgroundImage: AssetImage('assets/logos/one_click_no_bg_logo.png'),
       ),
-      title: Txt(
-        text: "Tangella Naga Charan",
-        fontWeight: FontWeight.bold,
-        color: darkMode ? Colors.white : Colors.black,
+      title: Text(
+        "Tangella Naga Charan",
+        style: TextStyle(
+          fontWeight: FontWeight.bold,
+          fontFamily: 'Raleway',
+          color: darkMode ? Colors.white : Colors.black,
+        ),
       ),
-      subtitle: Txt(
-        text: "+91 7207262274",
-        color: darkMode ? Colors.white70 : Colors.black87,
+      subtitle: Text(
+        "+91 7207262274",
+        style: TextStyle(
+          color: darkMode ? Colors.white70 : Colors.black87,
+        ),
       ),
       trailing: IconButton(
         icon: Icon(
           Icons.edit,
-          color: darkMode ? Colors.white : Colors.black,
+          color: darkMode ? Colors.teal : Colors.teal,
         ),
         onPressed: () {
           Get.to(() => const EditProfilePage());
@@ -92,7 +94,7 @@ class _AccountPageState extends State<AccountPage> {
             "Plus membership",
             darkMode),
         colorTile(
-            Icons.grade, Colors.orange, Colors.yellow, "My rating", darkMode),
+            Icons.grade, Colors.orange, Colors.orange, "My rating", darkMode),
         colorTile(Icons.wallet, const Color.fromARGB(255, 172, 134, 121),
             Colors.brown, "Wallet", darkMode),
         colorTile(Icons.settings_outlined, Colors.blue, Colors.blue, "Settings",
@@ -104,26 +106,40 @@ class _AccountPageState extends State<AccountPage> {
   Widget bwTiles(bool darkMode) {
     return Column(
       children: [
-        bwTile(Icons.info_outline, Colors.white, Colors.black, "About Us",
-            darkMode),
-        bwTile(Icons.textsms_outlined, Colors.white, Colors.black,
-            "Chat with Us", darkMode),
-        bwTile(Icons.contact_phone, Colors.white, Colors.black, "Contact Us",
-            darkMode),
+        bwTile(Icons.info_outline, Colors.teal, "About Us", darkMode),
+        bwTile(Icons.textsms_outlined, Colors.teal, "Chat with Us", darkMode),
+        bwTile(Icons.contact_phone, Colors.teal, "Contact Us", darkMode),
       ],
     );
   }
 
-  Widget bwTile(IconData icon, Color darkColor, Color lightColor, String text,
-      bool darkMode) {
-    return colorTile(icon, darkColor, lightColor, text, darkMode,
-        blackAndWhite: true);
+  Widget bwTile(IconData icon, Color bgColor, String text, bool darkMode) {
+    return ListTile(
+      leading: Container(
+        height: 45,
+        width: 45,
+        decoration: BoxDecoration(
+          color: bgColor,
+          borderRadius: BorderRadius.circular(18),
+        ),
+        child: Icon(icon, color: Colors.white),
+      ),
+      title: Text(
+        text,
+        style: TextStyle(
+          fontWeight: FontWeight.w500,
+          color: darkMode ? Colors.white : Colors.black,
+        ),
+      ),
+      trailing: Icon(Icons.arrow_forward_ios,
+          color: darkMode ? Colors.white : Colors.black, size: 20),
+      onTap: () {},
+    );
   }
 
   Widget colorTile(IconData icon, Color darkColor, Color lightColor,
-      String text, bool darkMode,
-      {bool blackAndWhite = false}) {
-    Color? pickedColor = darkMode ? Colors.grey[800] : const Color(0xfff3f4fe);
+      String text, bool darkMode) {
+    Color? pickedColor = darkMode ? Colors.grey[800] : Colors.grey[200];
     Color iconColor = darkMode ? darkColor : lightColor;
 
     return ListTile(
@@ -131,15 +147,17 @@ class _AccountPageState extends State<AccountPage> {
         height: 45,
         width: 45,
         decoration: BoxDecoration(
-          color: blackAndWhite ? pickedColor : iconColor.withOpacity(0.09),
+          color: pickedColor,
           borderRadius: BorderRadius.circular(18),
         ),
         child: Icon(icon, color: iconColor),
       ),
-      title: Txt(
-        text: text,
-        fontWeight: FontWeight.w500,
-        color: darkMode ? Colors.white : Colors.black,
+      title: Text(
+        text,
+        style: TextStyle(
+          fontWeight: FontWeight.w500,
+          color: darkMode ? Colors.white : Colors.black,
+        ),
       ),
       trailing: Icon(Icons.arrow_forward_ios,
           color: darkMode ? Colors.white : Colors.black, size: 20),

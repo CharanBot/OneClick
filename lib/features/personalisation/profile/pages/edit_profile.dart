@@ -1,8 +1,6 @@
-// ignore_for_file: unused_local_variable
-
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
-import 'package:only_click/features/personalisation/profile/Widgets_profile/Widgets.dart';
 
 class EditProfilePage extends StatefulWidget {
   const EditProfilePage({Key? key}) : super(key: key);
@@ -27,16 +25,18 @@ class _EditProfilePageState extends State<EditProfilePage> {
     return Scaffold(
       backgroundColor: darkMode ? Colors.grey[900] : const Color(0xffffffff),
       appBar: AppBar(
-        backgroundColor: darkMode ? Colors.grey[850] : const Color(0xfff3f4fe),
-        title: Txt(
-          text: "Edit Profile",
-          fontWeight: FontWeight.bold,
-          color: darkMode ? Colors.white : Colors.black,
+        backgroundColor: darkMode ? Colors.grey[850] : Colors.teal,
+        title: Text(
+          "Edit Profile",
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            color: darkMode ? Colors.white : Colors.white,
+          ),
         ),
         leading: IconButton(
           icon: Icon(
             Icons.arrow_back,
-            color: darkMode ? Colors.white : Colors.black,
+            color: darkMode ? Colors.white : Colors.white,
           ),
           onPressed: () {
             Navigator.of(context).pop();
@@ -61,12 +61,13 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 ),
                 focusedBorder: UnderlineInputBorder(
                   borderSide: BorderSide(
-                    color: darkMode ? Colors.white : Colors.black,
+                    color: darkMode ? Colors.teal : Colors.teal,
                   ),
                 ),
               ),
               style: TextStyle(color: darkMode ? Colors.white : Colors.black),
             ),
+            const SizedBox(height: 16),
             TextField(
               controller: _emailController,
               decoration: InputDecoration(
@@ -81,12 +82,13 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 ),
                 focusedBorder: UnderlineInputBorder(
                   borderSide: BorderSide(
-                    color: darkMode ? Colors.white : Colors.black,
+                    color: darkMode ? Colors.teal : Colors.teal,
                   ),
                 ),
               ),
               style: TextStyle(color: darkMode ? Colors.white : Colors.black),
             ),
+            const SizedBox(height: 16),
             IntlPhoneField(
               controller: _phoneController,
               decoration: InputDecoration(
@@ -101,7 +103,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 ),
                 focusedBorder: UnderlineInputBorder(
                   borderSide: BorderSide(
-                    color: darkMode ? Colors.white : Colors.black,
+                    color: darkMode ? Colors.teal : Colors.teal,
                   ),
                 ),
               ),
@@ -111,7 +113,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 _selectedCountryCode = phone.countryCode;
               },
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 32),
             ElevatedButton(
               onPressed: () {
                 // Save the details
@@ -120,24 +122,39 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 String phone = '$_selectedCountryCode ${_phoneController.text}';
 
                 // Implement your save functionality here
+                if (kDebugMode) {
+                  print('Name: $name');
+                }
+                if (kDebugMode) {
+                  print('Email: $email');
+                }
+                if (kDebugMode) {
+                  print('Phone: $phone');
+                }
 
                 ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(
-                    content: Txt(
-                      text: "Profile updated successfully",
-                      color: Colors.white,
+                    content: Text(
+                      "Profile updated successfully",
+                      style: TextStyle(color: Colors.white),
                     ),
                     backgroundColor: Colors.green,
                   ),
                 );
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: darkMode ? Colors.blueGrey : Colors.blue,
+                backgroundColor: darkMode ? Colors.blueGrey : Colors.teal,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                padding: const EdgeInsets.symmetric(vertical: 16),
               ),
-              child: const Txt(
-                text: "Save",
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
+              child: const Text(
+                "Save",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
               ),
             ),
           ],

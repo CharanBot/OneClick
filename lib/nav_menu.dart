@@ -16,6 +16,12 @@ class NavigationMenu extends StatelessWidget {
         MediaQuery.of(context).platformBrightness;
     final bool darkMode = brightnessValue == Brightness.dark;
 
+    Color getIconColor(int index) {
+      return controller.selectedIndex.value == index
+          ? (darkMode ? Colors.tealAccent : Colors.teal)
+          : (darkMode ? Colors.white : Colors.black);
+    }
+
     return Scaffold(
       bottomNavigationBar: Obx(
         () => NavigationBar(
@@ -28,13 +34,29 @@ class NavigationMenu extends StatelessWidget {
               ? Colors.grey.withOpacity(0)
               : Colors.white.withOpacity(1),
           indicatorColor: darkMode
-              ? Colors.white.withOpacity(0.1)
-              : Colors.black.withOpacity(0.1),
-          destinations: const [
-            NavigationDestination(icon: Icon(Iconsax.home), label: 'Home'),
-            NavigationDestination(icon: Icon(Iconsax.shop_add), label: 'Store'),
-            NavigationDestination(icon: Icon(Iconsax.message), label: 'Chats'),
-            NavigationDestination(icon: Icon(Iconsax.user), label: 'Profile'),
+              ? Colors.tealAccent.withOpacity(0.2)
+              : Colors.teal.withOpacity(0.2),
+          destinations: [
+            NavigationDestination(
+              icon: Icon(Iconsax.home, color: getIconColor(0)),
+              label: 'Home',
+              selectedIcon: Icon(Iconsax.home, color: getIconColor(0)),
+            ),
+            NavigationDestination(
+              icon: Icon(Iconsax.shop_add, color: getIconColor(1)),
+              label: 'Store',
+              selectedIcon: Icon(Iconsax.shop_add, color: getIconColor(1)),
+            ),
+            NavigationDestination(
+              icon: Icon(Iconsax.message, color: getIconColor(2)),
+              label: 'Chats',
+              selectedIcon: Icon(Iconsax.message, color: getIconColor(2)),
+            ),
+            NavigationDestination(
+              icon: Icon(Iconsax.user, color: getIconColor(3)),
+              label: 'Profile',
+              selectedIcon: Icon(Iconsax.user, color: getIconColor(3)),
+            ),
           ],
         ),
       ),

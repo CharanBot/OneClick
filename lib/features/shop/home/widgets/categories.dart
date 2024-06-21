@@ -15,7 +15,7 @@ class THomeCategories extends StatelessWidget {
     final categories = [
       {
         'title': 'Plumbing',
-        'image': 'assets/icons/categories/plumbing.png',
+        'image': 'assets/icons/categories/Plumber.png',
         'variations': ['Pipe Fitting', 'Leak Repair', 'Drain Cleaning']
       },
       {
@@ -34,7 +34,7 @@ class THomeCategories extends StatelessWidget {
       },
       {
         'title': 'Cleaning',
-        'image': 'assets/icons/categories/Mopping Girl.png',
+        'image': 'assets/icons/categories/Maid.png',
         'variations': ['House Cleaning', 'Office Cleaning', 'Window Cleaning']
       },
       {
