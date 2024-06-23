@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:only_click/features/shop/home/widgets/portfolio_page.dart';
+import 'package:only_click/nav_menu.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ProductListPage extends StatelessWidget {
   const ProductListPage({Key? key}) : super(key: key);
@@ -12,14 +16,16 @@ class ProductListPage extends StatelessWidget {
       isAvailable: true,
       imageAssetPath: 'assets/icons/mostbooked/laptop_repair.jpg',
       rating: 4.5,
+      phoneNumber: '+91 7207262274',
     ),
     Product(
       title: 'Venu Charan',
       location: 'Ohio',
       experience: 3,
-      isAvailable: false,
+      isAvailable: true,
       imageAssetPath: 'assets/icons/mostbooked/laptop_repair.jpg',
       rating: 4.0,
+      phoneNumber: '+91 7207262274',
     ),
     Product(
       title: 'Phanishwar Jonnalagadda',
@@ -28,16 +34,81 @@ class ProductListPage extends StatelessWidget {
       isAvailable: true,
       imageAssetPath: 'assets/icons/mostbooked/laptop_repair.jpg',
       rating: 3.5,
+      phoneNumber: '+91 7207262274',
     ),
     Product(
       title: 'Shanmuka Jonnalagadda',
       location: 'Canada',
       experience: 6,
-      isAvailable: true,
+      isAvailable: false,
       imageAssetPath: 'assets/icons/mostbooked/laptop_repair.jpg',
       rating: 4.8,
+      phoneNumber: '+91 7207262274',
     ),
   ];
+
+  void _showContactOptions(BuildContext context, Product product) {
+    final navigationController = Get.find<NavigationController>();
+    final Brightness brightnessValue =
+        MediaQuery.of(context).platformBrightness;
+    final bool darkMode = brightnessValue == Brightness.dark;
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(
+            'Contact ${product.title}',
+            style: const TextStyle(
+              fontFamily: 'Poppins',
+              fontWeight: FontWeight.w600,
+              color: Colors.teal,
+            ),
+          ),
+          content: Text(
+            'How would you like to contact this provider?',
+            style: TextStyle(
+              fontFamily: 'Poppins',
+              fontWeight: FontWeight.normal,
+              color: darkMode ? Colors.white : Colors.black,
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              child:
+                  const Text('Call', style: TextStyle(fontFamily: 'Poppins')),
+              onPressed: () async {
+                Navigator.of(context).pop(); // Close the dialog
+                final Uri launchUri = Uri(
+                  scheme: 'tel',
+                  path: product.phoneNumber,
+                );
+                await launchUrl(launchUri); // Launch phone call
+              },
+            ),
+            TextButton(
+              child:
+                  const Text('Chat', style: TextStyle(fontFamily: 'Poppins')),
+              onPressed: () {
+                Navigator.of(context).pop();
+                Navigator.of(context).pop();
+                navigationController.goToChats();
+              },
+            ),
+            TextButton(
+              child: const Text('More Info...',
+                  style: TextStyle(fontFamily: 'Poppins')),
+              onPressed: () {
+                Navigator.of(context).pop(); // Close the dialog
+                Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => PortfolioPage(product: product),
+                ));
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -63,20 +134,25 @@ class ProductListPage extends StatelessWidget {
           itemCount: sampleProducts.length,
           itemBuilder: (context, index) {
             final product = sampleProducts[index];
-            return Column(
-              children: [
-                ProductCardWidget(
-                  product: product,
-                  darkMode: darkMode,
-                ),
-                if (product != sampleProducts.last)
-                  Divider(
-                    thickness: 0.2,
-                    color: darkMode ? Colors.white : Colors.black,
-                    indent: 136, // indent to align with image width + spacing
-                    endIndent: 16,
+            return GestureDetector(
+              onTap: () => _showContactOptions(context, product),
+              child: Column(
+                children: [
+                  ProductCardWidget(
+                    product: product,
+                    darkMode: darkMode,
+                    onContactPressed: () =>
+                        _showContactOptions(context, product),
                   ),
-              ],
+                  if (product != sampleProducts.last)
+                    Divider(
+                      thickness: 0.2,
+                      color: darkMode ? Colors.white : Colors.black,
+                      indent: 136, // indent to align with image width + spacing
+                      endIndent: 16,
+                    ),
+                ],
+              ),
             );
           },
         ),
@@ -88,11 +164,13 @@ class ProductListPage extends StatelessWidget {
 class ProductCardWidget extends StatelessWidget {
   final Product product;
   final bool darkMode;
+  final VoidCallback onContactPressed;
 
   const ProductCardWidget({
     Key? key,
     required this.product,
     required this.darkMode,
+    required this.onContactPressed,
   }) : super(key: key);
 
   @override
@@ -178,7 +256,7 @@ class ProductCardWidget extends StatelessWidget {
                         const SizedBox(width: 4),
                         Expanded(
                           child: Text(
-                            '${product.experience} years of the experience',
+                            '${product.experience} years of experience',
                             style: TextStyle(
                               fontFamily: 'Poppins',
                               fontWeight: FontWeight.w500,
@@ -249,19 +327,18 @@ class ProductCardWidget extends StatelessWidget {
             ),
           ),
           Positioned(
-            bottom: -0,
+            bottom: 0,
             right: 0,
             child: Container(
               width: 40,
               height: 40,
               decoration: const BoxDecoration(
-                  shape: BoxShape.circle,
-                  // color: darkMode ? Colors.grey[800] : Colors.grey[200],
-                  color: Colors.teal),
+                  shape: BoxShape.circle, color: Colors.teal),
               child: IconButton(
                 icon: const Icon(Icons.chevron_right),
-                onPressed: () {},
-                // color: textColor,
+                onPressed: () {
+                  Get.to(() => PortfolioPage(product: product));
+                },
                 color: Colors.white,
               ),
             ),
@@ -281,6 +358,7 @@ class FavoriteIcon extends StatefulWidget {
   }) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _FavoriteIconState createState() => _FavoriteIconState();
 }
 
@@ -326,6 +404,7 @@ class Product {
   final bool isAvailable;
   final String imageAssetPath;
   final double rating;
+  final String phoneNumber;
 
   Product({
     required this.title,
@@ -334,5 +413,6 @@ class Product {
     required this.isAvailable,
     required this.imageAssetPath,
     required this.rating,
+    required this.phoneNumber,
   });
 }
