@@ -36,7 +36,8 @@ class _AccountPageState extends State<AccountPage> {
   Widget userTile(bool darkMode) {
     return ListTile(
       leading: const CircleAvatar(
-        backgroundImage: AssetImage('assets/logos/one_click_no_bg_logo.png'),
+        backgroundImage:
+            AssetImage('assets/icons/mostbooked/laptop_repair.jpg'),
       ),
       title: Text(
         "Tangella Naga Charan",
