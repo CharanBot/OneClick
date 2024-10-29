@@ -11,12 +11,12 @@ class StoreScreen extends StatelessWidget {
 
     final List<Map<String, String>> section1Data = [
       {
-        'imageUrl': 'assets/images/banners/sample_banner1.jpg',
+        'imageUrl': 'assets/images/banners/store_img1.png',
         'title': 'Company 1',
         'location': 'Location 1',
       },
       {
-        'imageUrl': 'assets/images/banners/sample_banner2.jpg',
+        'imageUrl': 'assets/images/banners/store_img2.png',
         'title': 'Company 2',
         'location': 'Location 2',
       },

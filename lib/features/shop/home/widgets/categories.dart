@@ -166,19 +166,3 @@ class TVerticalImageText extends StatelessWidget {
     );
   }
 }
-
-class SubCategoriesScreen extends StatelessWidget {
-  const SubCategoriesScreen({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Sub Categories'),
-      ),
-      body: const Center(
-        child: Text('Sub Categories Content'),
-      ),
-    );
-  }
-}
